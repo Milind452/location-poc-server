@@ -1,8 +1,8 @@
-var express = require("express");
-var bodyParser = require("body-parser");
-var Pusher = require("pusher");
+const express = require("express");
+const cors = require("cors");
+const Pusher = require("pusher");
 
-var pusher = new Pusher({
+const pusher = new Pusher({
     app_id: "1659650",
     key: "8790afb5e24f5aa48bd1",
     secret: "336095bd9cb074fc31b2",
@@ -10,10 +10,11 @@ var pusher = new Pusher({
     useTLS: true,
 });
 
-var app = express();
-app.use(express.static("public"));
-app.use(bodyParser.json());
+const app = express();
+
+app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cors());
 
 app.get("/", function (req, res) {
     res.send("Hello World!");
