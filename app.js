@@ -13,7 +13,7 @@ const pusher = new Pusher({
 const app = express();
 
 app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
 app.get("/", function (req, res) {
